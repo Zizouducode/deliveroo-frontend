@@ -135,6 +135,10 @@ p {
   padding: 15px;
   border-radius: 5px;
   cursor: pointer;
+  transition: box-shadow 0.3s;
+}
+.menu-item:hover {
+  box-shadow: 0 0 15px rgba(193, 190, 190, 0.4);
 }
 
 .menu-item-h3 {
