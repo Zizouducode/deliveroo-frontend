@@ -1,38 +1,182 @@
-.App {
-  text-align: center;
+/* GLOBAL RULES */
+
+* {
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.container {
+  display: flex;
+  margin: 0 auto;
+  max-width: 1200px;
+  width: 96vw;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* TITLES */
+
+h1 {
+  display: block;
+  font-size: 2em;
+  margin-block-start: 0.67em;
+  margin-block-end: 0.67em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  font-weight: bold;
+}
+
+h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #2e3333;
+}
+
+h3 {
+  font-size: 1.17em;
+  color: #2e3333;
+}
+
+p {
+  font-size: 0.9rem;
+  color: #808484;
+}
+
+/* HEADER */
+
+.logo {
+  height: 70%;
+}
+
+.header {
+  width: 100vw;
+}
+
+.top-bar {
+  border-bottom: 1px solid #e9ebeb;
+}
+.top-bar-center {
+  display: flex;
+  width: 96vw;
+  max-width: 1200px;
+  margin: 0 auto;
+  height: 60px;
+  align-items: center;
+}
+
+.restaurant-info {
+  display: flex;
+  padding: 30px 0;
+}
+
+.restaurant-info-text {
   display: flex;
   flex-direction: column;
+  flex: 4;
+}
+
+.restaurant-info-text h1 {
+  font-size: 2rem;
+  margin-top: 0.6rem;
+  margin-bottom: 2rem;
+}
+
+.restaurant-info-text p {
+  color: #868a8a;
+  font-size: 1.2rem;
+  line-height: 1.5;
+}
+
+.restaurant-info-picture {
+  width: 350px;
+  flex: 1;
+  display: flex;
+  border-radius: 5px;
+}
+
+/* CONTENT */
+
+.content {
+  background-color: #f3f5f5;
+  display: flex;
+}
+
+.content-center {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+}
+
+.menu {
+  width: 70%;
+}
+
+.cart {
+  width: 30%;
+}
+
+.menu-items {
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 30px;
+
+  /* justify-content: center; */
+}
+
+.menu-item {
+  display: flex;
+  justify-content: space-between;
+  width: 48%;
+  min-width: 300px;
+  background-color: white;
+  height: 160px;
+  padding: 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.menu-item-h3 {
+  font-weight: 400;
+  margin-bottom: 0.5rem;
+}
+.menu-item-title {
+  line-height: 4rem;
+}
+
+.menu-item-description {
+  height: 2.6rem;
+  font-size: 0.9rem;
+  line-height: 1.3rem;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+
+.menu-item-price {
+  font-size: 1.1rem;
+  color: #808484;
+}
+
+.menu-item-popular {
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: #ff8000;
+}
+
+.menu-item-price-popular {
+  display: flex;
+  gap: 30px;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.menu-item-img {
+  height: 130px;
+  width: 130px;
+  object-fit: cover;
+  border-radius: 5px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.items-container {
+  margin-bottom: 20px;
 }

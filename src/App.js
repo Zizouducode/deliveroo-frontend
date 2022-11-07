@@ -1,23 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { useState, useEffect } from "react";
+import axios from "axios";
+import Header from "./components/Header";
+import Content from "./components/Content";
 
 function App() {
-  return (
+  //State to get the data fron the baackend
+  const [data, setData] = useState();
+  //State to notify when data is reiceved
+  const [isLoading, setIsLoading] = useState(true);
+
+  //UseEffect required to fetch the data when the component is mount
+  useEffect(() => {
+    const fetchData = async () => {
+      //request to get the data from the backend
+      const response = await axios.get(
+        "https://site--deliveroo-backend--nfqr62d7mh6n.code.run/"
+      );
+      //Store data in the state data
+      setData(response.data);
+      //Change bool isLoading to specify that data is received
+      setIsLoading(false);
+    };
+    fetchData();
+  }, []);
+  return isLoading ? (
+    <p>Waiting for data from server</p>
+  ) : (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div>
+        <Header data={data} />
+      </div>
+      <div>
+        <Content data={data} />
+      </div>
     </div>
   );
 }
