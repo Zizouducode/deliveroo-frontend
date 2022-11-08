@@ -7,37 +7,23 @@ const Content = ({ data }) => {
   let totalPrice = 0;
 
   for (let i = 0; i < cart.length; i++) {
-    totalPrice = totalPrice + Number(cart[i].price);
+    totalPrice = totalPrice + Number(cart[i].price * cart[i].quantity);
   }
 
   const handleChangePlus = (index) => {
     const newCart = [...cart];
-    // console.log(newCart);
-    newCart[index].quantity = newCart[index].quantity + 1;
-    console.log(newCart[index].quantity);
-    console.log(newCart);
-    setCart(newCart);
-    // console.log(newCart);
 
-    // let isPresent = false;
-    // for (let i = 0; i < newCart.length; i++) {
-    //   if (newCart[i].id === elem.id) {
-    //     isPresent = true;
-    //   }
-    // }
-    // if (isPresent) {
-    //   console.log("je suis la");
-    //   console.log("quantity before =>", newCart[i].quantity);
-    //   newCart[i].quantity = newCart[i].quantity + 1;
-    //   console.log("quantity after =>", newCart[i].quantity);
-    //   setCart(newCart);
-    //   console.log(newCart);
-    // }
+    newCart[index].quantity = newCart[index].quantity + 1;
+    setCart(newCart);
   };
 
   const handleChangeMinus = (index) => {
     const newCart = [...cart];
-    newCart.splice(index, 1);
+    newCart[index].quantity = newCart[index].quantity - 1;
+    // console.log(newCart);
+    if (newCart[index].quantity === 0) {
+      newCart.splice(index, 1);
+    }
     setCart(newCart);
   };
   return (
@@ -54,32 +40,35 @@ const Content = ({ data }) => {
           <button className="cart-button">Valider mon panier</button>
           <div className="cart-items">
             {cart.map((elem, index) => {
-              elem.quantity = 1;
               return (
                 <div key={index}>
-                  <div className="cart-row" key={index}>
-                    <div className="cart-row-left">
-                      <div
-                        onClick={() => {
-                          handleChangeMinus(index);
-                        }}
-                      >
-                        -
-                      </div>
-                      <div>{elem.quantity}</div>
-                      <div
-                        onClick={() => {
-                          handleChangePlus(index);
-                        }}
-                      >
-                        +
+                  {elem.quantity && (
+                    <div>
+                      <div className="cart-row" key={index}>
+                        <div className="cart-row-left">
+                          <div
+                            onClick={() => {
+                              handleChangeMinus(index);
+                            }}
+                          >
+                            -
+                          </div>
+                          <div>{elem.quantity}</div>
+                          <div
+                            onClick={() => {
+                              handleChangePlus(index);
+                            }}
+                          >
+                            +
+                          </div>
+                        </div>
+                        <div className="cart-row-right">
+                          <div>{elem.title}</div>
+                          <div>{(elem.price * elem.quantity).toFixed(2)} €</div>
+                        </div>
                       </div>
                     </div>
-                    <div className="cart-row-right">
-                      <div>{elem.title}</div>
-                      <div>{elem.price} €</div>
-                    </div>
-                  </div>
+                  )}
                 </div>
               );
             })}

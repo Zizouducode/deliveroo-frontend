@@ -1,8 +1,20 @@
 const Meals = ({ elem, cart, setCart }) => {
   const handleClick = (elem) => {
+    let isPresent = false;
+
     const newCart = [...cart];
-    newCart.push(elem);
-    console.log(newCart);
+    for (let i = 0; i < cart.length; i++) {
+      if (newCart[i].id === elem.id) {
+        isPresent = true;
+        newCart[i].quantity = newCart[i].quantity + 1;
+      }
+    }
+    console.log(isPresent);
+    if (!isPresent) {
+      newCart.push(elem);
+      elem.quantity = 1;
+    }
+
     setCart(newCart);
   };
 
