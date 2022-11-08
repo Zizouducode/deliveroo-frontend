@@ -37,55 +37,80 @@ const Content = ({ data }) => {
           })}
         </div>
         <div className="cart-container">
-          <button className="cart-button">Valider mon panier</button>
-          <div className="cart-items">
-            {cart.map((elem, index) => {
-              return (
-                <div key={index}>
-                  {elem.quantity && (
-                    <div>
-                      <div className="cart-row" key={index}>
-                        <div className="cart-row-left">
-                          <div
-                            onClick={() => {
-                              handleChangeMinus(index);
-                            }}
-                          >
-                            -
-                          </div>
-                          <div>{elem.quantity}</div>
-                          <div
-                            onClick={() => {
-                              handleChangePlus(index);
-                            }}
-                          >
-                            +
-                          </div>
+          <div className="cart">
+            <div></div>
+            <button
+              className={
+                cart.length > 0
+                  ? "cart-button cart-button-not-empty"
+                  : "cart-button cart-button-empty"
+              }
+            >
+              Valider mon panier
+            </button>
+            <div>
+              {cart.length > 0 ? (
+                <div>
+                  <div className="cart-items">
+                    {cart.map((elem, index) => {
+                      return (
+                        <div key={index}>
+                          {elem.quantity && (
+                            <div>
+                              <div className="cart-row" key={index}>
+                                <div className="cart-row-left">
+                                  <div
+                                    className="increase-decrease"
+                                    onClick={() => {
+                                      handleChangeMinus(index);
+                                    }}
+                                  >
+                                    -
+                                  </div>
+                                  <span className="quantity">
+                                    {elem.quantity}
+                                  </span>
+                                  <div
+                                    className="increase-decrease"
+                                    onClick={() => {
+                                      handleChangePlus(index);
+                                    }}
+                                  >
+                                    +
+                                  </div>
+                                </div>
+                                <div className="cart-row-right">
+                                  <div>{elem.title}</div>
+                                  <div>
+                                    {(elem.price * elem.quantity).toFixed(2)} €
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          )}
                         </div>
-                        <div className="cart-row-right">
-                          <div>{elem.title}</div>
-                          <div>{(elem.price * elem.quantity).toFixed(2)} €</div>
-                        </div>
-                      </div>
+                      );
+                    })}
+                  </div>
+                  <div className="cart-price-details">
+                    <div className="cart-item-price">
+                      <span>Sous-total </span>
+                      <span>{totalPrice.toFixed(2)} €</span>
                     </div>
-                  )}
+                    <div className="cart-item-price">
+                      <span>Frais de livraison </span>
+                      <span>{deliveryFees} €</span>
+                    </div>
+                  </div>
+                  <div className="cart-price-total">
+                    <span>Total </span>
+                    <span>{(totalPrice + deliveryFees).toFixed(2)} €</span>
+                  </div>
                 </div>
-              );
-            })}
-          </div>
-          <div className="cart-price-details">
-            <div className="cart-item-price">
-              <span>Sous-total </span>
-              <span>{totalPrice} €</span>
+              ) : (
+                <div className="empty-cart">Panier vide</div>
+              )}
             </div>
-            <div className="cart-item-price">
-              <span>Frais de livraison </span>
-              <span>{deliveryFees} €</span>
-            </div>
-          </div>
-          <div className="cart-price-total">
-            <span>Total </span>
-            <span>{totalPrice + deliveryFees} €</span>
           </div>
         </div>
       </div>

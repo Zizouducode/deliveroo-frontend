@@ -9,7 +9,7 @@ const Meals = ({ elem, cart, setCart }) => {
         newCart[i].quantity = newCart[i].quantity + 1;
       }
     }
-    console.log(isPresent);
+
     if (!isPresent) {
       newCart.push(elem);
       elem.quantity = 1;
