@@ -5,27 +5,34 @@ const Content = ({ data }) => {
   const [cart, setCart] = useState([]);
   const deliveryFees = 2.5;
   let totalPrice = 0;
+
   for (let i = 0; i < cart.length; i++) {
     totalPrice = totalPrice + Number(cart[i].price);
   }
 
-  const handleChangePlus = (elem) => {
+  const handleChangePlus = (index) => {
     const newCart = [...cart];
+    // console.log(newCart);
+    newCart[index].quantity = newCart[index].quantity + 1;
+    console.log(newCart[index].quantity);
     console.log(newCart);
-    let isPresent = false;
-    for (let i = 0; i < newCart.length; i++) {
-      if (newCart[i].id === elem.id) {
-        isPresent = true;
-        if (isPresent) {
-          console.log("je suis la");
-          console.log(newCart[i].quantity);
-          newCart[i].quantity = newCart[i].quantity + 1;
-          console.log(newCart[i].quantity);
-          setCart(newCart);
-          console.log(newCart);
-        }
-      }
-    }
+    setCart(newCart);
+    // console.log(newCart);
+
+    // let isPresent = false;
+    // for (let i = 0; i < newCart.length; i++) {
+    //   if (newCart[i].id === elem.id) {
+    //     isPresent = true;
+    //   }
+    // }
+    // if (isPresent) {
+    //   console.log("je suis la");
+    //   console.log("quantity before =>", newCart[i].quantity);
+    //   newCart[i].quantity = newCart[i].quantity + 1;
+    //   console.log("quantity after =>", newCart[i].quantity);
+    //   setCart(newCart);
+    //   console.log(newCart);
+    // }
   };
 
   const handleChangeMinus = (index) => {
@@ -62,7 +69,7 @@ const Content = ({ data }) => {
                       <div>{elem.quantity}</div>
                       <div
                         onClick={() => {
-                          handleChangePlus(elem);
+                          handleChangePlus(index);
                         }}
                       >
                         +
