@@ -14,13 +14,16 @@ function App() {
   useEffect(() => {
     const fetchData = async () => {
       //request to get the data from the backend
-      const response = await axios.get(
-        "https://site--deliveroo-backend--nfqr62d7mh6n.code.run/"
-      );
-      //Store data in the state data
-      setData(response.data);
-      //Change bool isLoading to specify that data is received
-      setIsLoading(false);
+      try {
+        const response = await axios.get(
+          "https://site--deliveroo-backend--nfqr62d7mh6n.code.run/"
+        ); //Store data in the state data
+        setData(response.data);
+        //Change bool isLoading to specify that data is received
+        setIsLoading(false);
+      } catch (error) {
+        console.log(error.message);
+      }
     };
     fetchData();
   }, []);

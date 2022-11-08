@@ -12,7 +12,6 @@ body {
   display: flex;
   margin: 0 auto;
   max-width: 1200px;
-  width: 96vw;
 }
 
 /* TITLES */
@@ -25,6 +24,7 @@ h1 {
   margin-inline-start: 0px;
   margin-inline-end: 0px;
   font-weight: bold;
+  color: #2e3333;
 }
 
 h2 {
@@ -49,16 +49,12 @@ p {
   height: 70%;
 }
 
-.header {
-  width: 100vw;
-}
-
 .top-bar {
   border-bottom: 1px solid #e9ebeb;
 }
 .top-bar-center {
   display: flex;
-  width: 96vw;
+
   max-width: 1200px;
   margin: 0 auto;
   height: 60px;
@@ -68,12 +64,12 @@ p {
 .restaurant-info {
   display: flex;
   padding: 30px 0;
+  gap: 20px;
 }
 
 .restaurant-info-text {
   display: flex;
   flex-direction: column;
-  flex: 4;
 }
 
 .restaurant-info-text h1 {
@@ -90,7 +86,7 @@ p {
 
 .restaurant-info-picture {
   width: 350px;
-  flex: 1;
+
   display: flex;
   border-radius: 5px;
 }
@@ -106,6 +102,8 @@ p {
   max-width: 1200px;
   margin: 0 auto;
   display: flex;
+
+  justify-content: space-between;
 }
 
 .menu {
@@ -136,6 +134,7 @@ p {
   border-radius: 5px;
   cursor: pointer;
   transition: box-shadow 0.3s;
+  gap: 20px;
 }
 .menu-item:hover {
   box-shadow: 0 0 15px rgba(193, 190, 190, 0.4);
@@ -183,4 +182,22 @@ p {
 
 .items-container {
   margin-bottom: 20px;
+}
+
+/* Cart */
+
+.cart-container {
+  width: 29%;
+  height: 185px;
+  background-color: white;
+  margin-top: 30px;
+  display: flex;
+  border-radius: 5px;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.cart-row {
+  display: flex;
+  background-color: red;
 }
